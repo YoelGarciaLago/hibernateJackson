@@ -1,14 +1,6 @@
-import Datos.Adestrador;
-import Datos.Pokedex;
-import Datos.Pokemon;
 import Hibernate.Metodos.MetodosAdestrador;
 import Hibernate.Metodos.MetodosPokedex;
 import Hibernate.Metodos.MetodosPokemon;
-
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -69,9 +61,16 @@ public class Main {
 //        metodosPokemon.listarPokemon();
 //        metodosAdestrador.listarAdestrador();
 
-        metodosPokemon.escribirAJSON("/home/yoi/IdeaProyects/ACCESO_A_DATOS/src/JSONs/pokemon.json",metodosPokemon.listarPokemon());
-        metodosPokemon.escribirAXML();
-        metodosAdestrador.escribirAJSON("/home/yoi/IdeaProyects/ACCESO_A_DATOS/src/JSONs/adestrador.json",metodosAdestrador.listarAdestrador());
-        metodosAdestrador.escribirAXML();
+        //metodosPokemon.escribirAJSON("/home/yoi/IdeaProjects/hibernateJackson/src/JSONs/pokemon.json",metodosPokemon.listarPokemon());
+        //metodosPokemon.escribirAXML();
+        //metodosAdestrador.escribirAJSON("/home/yoi/IdeaProjects/hibernateJackson/src/JSONs/adestrador.json",metodosAdestrador.listarAdestrador());
+        //metodosAdestrador.escribirAXML();
+
+
+
+        metodosPokemon.borrarTablaPk();
+        metodosAdestrador.borrarTablaAdestrador();
+
+
     }
 }

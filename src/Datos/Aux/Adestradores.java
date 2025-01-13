@@ -2,9 +2,11 @@ package Datos.Aux;
 
 
 import Datos.Adestrador;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 
 import java.util.List;
@@ -16,54 +18,18 @@ import java.util.List;
  * @author cristian
  * @version 1.0
  */
+@JacksonXmlRootElement(localName = "Adestradores")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Adestradores {
 
-    /**
-     * Lista de entrenadores, que se utiliza para la serialización y deserialización en formato XML.
-     */
-    @JacksonXmlElementWrapper(localName = "adestradrores")
-    @JacksonXmlProperty(localName = "adestrador")
-    private List<Adestrador> adestradorList;
+    @JacksonXmlElementWrapper(useWrapping = false)
+    private List<Adestrador> adestradores;
 
-    /**
-     * Lista de entrenadores, que se utiliza para la serialización y deserialización en formato JSON.
-     */
-    @JsonProperty("adestradores")
-    private List<Adestrador> adestradoresJson;
-
-    /**
-     * Constructor que inicializa la lista de entrenadores.
-     *
-     * @param adestradorList la lista de entrenadores a ser asignada.
-     */
-    public Adestradores(List<Adestrador> adestradorList) {
-        this.adestradorList = adestradorList;
+    public List<Adestrador> getAdestradores() {
+        return adestradores;
     }
 
-    /**
-     * Constructor vacío que permite la creación de una instancia sin inicializar las listas.
-     */
-    public Adestradores() {
-
-    }
-
-
-    /**
-     * Getter y setter de los atributos de la clase
-     * @return los valores correspondientes
-     */
-    public List<Adestrador> getAdestradorList() {
-        return adestradorList;
-    }
-
-    public void setPokemons(List<Adestrador> adestradorList) {
-        this.adestradorList = adestradorList;
-    }
-
-    public List<Adestrador> getAdestradoresJson() {
-        return adestradoresJson;
-    }
-    public void setAdestradoresJson(List<Adestrador> adestradoresJson) {
-        this.adestradoresJson = adestradoresJson;
+    public void setAdestradores(List<Adestrador> adestradores) {
+        this.adestradores = adestradores;
     }
 }
