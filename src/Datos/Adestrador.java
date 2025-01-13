@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -35,6 +36,7 @@ public class Adestrador implements Serializable {
 
     @OneToMany(mappedBy = "adestrador", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonProperty
+    @JsonManagedReference
     private List<Pokemon> pokemons = new ArrayList<>();
 
     public Adestrador(){
@@ -45,7 +47,10 @@ public class Adestrador implements Serializable {
         this.nome=nome;
         this.nacemento=nacemento;
     }
-
+    public Adestrador(String nome, Date nacemento){
+        this.nome=nome;
+        this.nacemento=nacemento;
+    }
     public String getNome() {
         return nome;
     }
@@ -72,10 +77,19 @@ public class Adestrador implements Serializable {
 
     @Override
     public String toString() {
+        System.out.println("{Pokemons:");
+        mostrarLista();
+        System.out.print("}");
         return "Adestrador{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", nacemento=" + nacemento +
-                '}';
+                ", nacemento=" + nacemento
+                ;
+    }
+
+    public void mostrarLista(){
+        for(Pokemon p : pokemons){
+            System.out.println(p);
+        }
     }
 }

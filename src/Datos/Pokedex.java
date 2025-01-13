@@ -7,6 +7,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @JacksonXmlRootElement
@@ -36,6 +37,12 @@ public class Pokedex implements Serializable {
         this.nome=nome;
         this.peso=peso;
         this.misc=misc;
+    }
+
+    public Pokedex(String pikachu, BigDecimal bigDecimal, String rataHepatítica) {
+        this.nome = pikachu;
+        this.peso = bigDecimal.doubleValue();
+        this.misc = rataHepatítica;
     }
 
     public int getId() {
